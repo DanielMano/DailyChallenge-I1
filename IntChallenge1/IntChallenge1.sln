@@ -3,11 +3,23 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26730.16
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IntChallenge1", "IntChallenge1\IntChallenge1.csproj", "{81C4EEBD-ADD6-4465-BF69-8C38E44472BF}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{81C4EEBD-ADD6-4465-BF69-8C38E44472BF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{81C4EEBD-ADD6-4465-BF69-8C38E44472BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{81C4EEBD-ADD6-4465-BF69-8C38E44472BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{81C4EEBD-ADD6-4465-BF69-8C38E44472BF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {41FA3DCD-9205-483B-BF10-8381A85DB85A}
+		SolutionGuid = {58E0B2CA-21A6-4E5F-9B0E-DFADF32A9DF1}
 	EndGlobalSection
 EndGlobal
