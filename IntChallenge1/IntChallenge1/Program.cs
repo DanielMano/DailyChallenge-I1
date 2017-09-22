@@ -60,26 +60,26 @@ namespace IntChallenge1
 
         void Print_menu()
         {
-            Console.WriteLine("MENU");
-            Console.WriteLine("=====");
-            Console.WriteLine("View Schedule");
-            Console.WriteLine("Add Event");
-            Console.WriteLine("Delete Event");
-            Console.WriteLine("Help");
-            Console.WriteLine("=====");
-            Console.WriteLine("EXIT");
+            Console.WriteLine("     MENU     ");
+            Console.WriteLine("==============");
+            Console.WriteLine("   Schedule   ");
+            Console.WriteLine("  Add Event   ");
+            Console.WriteLine(" Delete Event ");
+            Console.WriteLine("     Help     ");
+            Console.WriteLine("==============");
+            Console.WriteLine("     EXIT     ");
         }
 
         void Print_help()
         {
-            Console.Write("Valid commands (case insensitive):\n" +
-                "=====\n" +
-                "Help - brings you to help screen\n" +
-                "Schedule - brings you to schedule\n" +
-                "Add - brings you to add event screen\n" +
-                "Delete - delete screen" +
-                "Menu - takes you back to the menu\n" +
-                "Exit - closes program\n");
+            Console.Write("      Valid commands (case insensitive)     \n" +
+                "============================================\n" +
+                "  Help      brings you to help screen\n" +
+                "  Schedule  brings you to schedule\n" +
+                "  Add       brings you to add event screen\n" +
+                "  Delete    delete screen\n" +
+                "  Menu      takes you back to the menu\n" +
+                "  Exit      closes program\n");
         }
 
         void Init_schedule()
@@ -93,29 +93,44 @@ namespace IntChallenge1
 
         void Print_schedule()
         {
+            Console.Write("   SCHEDULE   \n" +
+                "==============\n");
+            string periodAM = "AM";
+            string periodPM = "PM";
             for (int i = 0; i < 24; i++)
             {
-                if (i == 0 || i == 12)
-                    Console.WriteLine(12 + " : " + eventSchedule[i].Task);
+                if (i <= 11)
+                {
+                    if (i == 0 || i == 12)
+                        Console.WriteLine(12 + " {0}: {1}", periodAM, eventSchedule[i].Task);
+                    else
+                        Console.WriteLine("{0:D2} {1}: {2}", (i % 12), periodAM, eventSchedule[i].Task);
+                }
                 else
-                    Console.WriteLine((i % 12) + " : " + eventSchedule[i].Task);                    
+                {
+                    if (i == 0 || i == 12)
+                        Console.WriteLine(12 + " {0}: {1}", periodPM, eventSchedule[i].Task);
+                    else
+                        Console.WriteLine("{0:D2} {1}: {2}", (i % 12), periodPM, eventSchedule[i].Task);
+                }
             }
         }
 
         void Print_add()
         {
-            Console.Write("ADD EVENT\n" +
-                "=====\n" +
-                "Input Hour first where valid inputs are 0-23.\n" +
-                "Input Task description second.\n" +
-                "If Hour inputed already has a task scheduled, will prompt for a different Hour.\n");
+            Console.Write("                     ADD EVENT\n" +
+                "=================================================\n" +
+                "Input Hour and Task description to add a Task\n" +
+                "to the schedule.  The valid Hour inputs are 0-23,\n" +
+                "and if there is already a scheduled event at\n" +
+                "the Hour inputed, you will be propted for another.\n\n");
             int hour = 0;
             bool valid = false;
             bool hourValid = false;
             do
             {
                 
-                Console.Write(">> ");
+                Console.Write("Hour >> ");
                 hourValid = Int32.TryParse(Console.ReadLine(), out hour);
                 valid = hourValid
                     && String.Equals(eventSchedule[hour].Task, "");
@@ -127,7 +142,7 @@ namespace IntChallenge1
                         Console.WriteLine("Hour already has scheduled Task. Choose another Hour.");
                 }
             } while (!valid);
-            Console.Write(">> ");
+            Console.Write("Task >> ");
             string task = Console.ReadLine();
             Event myEvent = new Event(task, hour);
             eventSchedule[hour] = myEvent;
@@ -137,10 +152,10 @@ namespace IntChallenge1
 
         void Print_del()
         {
-            Console.Write("DELETE EVENT\n" +
-                "=====\n" +
-                "Input Hour of Task to delete where valid inputs are 0-23.\n");
-            Console.Write(">> ");
+            Console.Write(" DELETE EVENT \n" +
+                "==============\n" +
+                "Input Hour of Task to delete where valid inputs are 0-23.\n\n");
+            Console.Write("Hour >> ");
             int hour = 0;
             while(!Int32.TryParse(Console.ReadLine(), out hour))
             {
